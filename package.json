@@ -1,0 +1,44 @@
+{
+  "name": "bga-dinner-in-paris",
+  "version": "1.0.11",
+  "description": "BGA Adaptation of board game Dinner in Paris (Funnyfox)",
+  "homepage": "https://redmine.sowapps.com/projects/bga-dinner-in-paris",
+  "keywords": [
+    "bga",
+    "dinner in paris"
+  ],
+  "author": "Florent HAZARD <f.hazard@sowapps.com>",
+  "private": true,
+  "license": "Private",
+  "bugs": {
+    "url": "https://redmine.sowapps.com/projects/bga-dinner-in-paris/issues"
+  },
+  "main": "dinnerinparis.js",
+  "scripts": {
+    "build:js": "webpack --config webpack.prod.js",
+    "watch:js": "webpack --watch --config webpack.prod.js",
+    "dev": "webpack --config webpack.dev.js",
+    "build:scss": "sass --no-source-map src/scss/style.scss dinnerinparis.css",
+    "watch:scss": "sass --watch  src/scss/style.scss dinnerinparis.css",
+    "watch": "npm run watch:js && npm run watch:scss",
+    "build": "npm run build:js && npm run build:scss"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/funnyfox-bga/bga-dinner-in-paris.git"
+  },
+  "dependencies": {
+    "json-parse-better-errors": "^1.0.2",
+    "p-limit": "^4.0.0",
+    "webpack-auto-inject-version-next": "^1.2.4",
+    "webpack-merge": "^5.8.0",
+    "webpack-sources": "^3.2.3",
+    "yocto-queue": "^1.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "sass": "^1.32.6",
+    "webpack-dev-server": "^4.9.3"
+  }
+}

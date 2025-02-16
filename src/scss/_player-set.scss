@@ -1,0 +1,117 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+$category-tracks: 1 16, 2 16, 3 12, 4 8;
+$cash-delta-x: 20.8px;
+$cash-delta-y: 16.55px;
+
+.game-player-set {
+  margin-bottom: 1rem;
+}
+
+.player-board-preview {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  
+  // Zoom real gameboard
+  .game-player-board {
+    //max-width: 100%;
+    margin: 0;
+    overflow: visible; // Let parent handle the overflow
+    
+    .actions {
+      display: none;
+    }
+  }
+}
+
+
+.game-player-board {
+  width: 100%;
+  aspect-ratio: 1440 / 948;
+  margin-bottom: 1rem;
+  background: url('img/game/Board-Invidividual.jpg') no-repeat;
+  background-size: cover;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  
+  @each $category, $tile-count in $category-tracks {
+    .track-category-#{$category} {
+      width: calc(5.18% * $tile-count);
+      height: 7.7%;
+      display: flex;
+      @include justify-content-end();
+      position: absolute;
+      top: calc(-11% + $category * 24%);
+      left: 14.4%;
+  
+      .token-terrace:not(:first-child) {
+        margin-left: 0.1%;
+      }
+    }
+  }
+  
+  .track-revenue {
+    position: absolute;
+    top: 28.5px;
+    left: 12.2px;
+    
+    .token-cash.cash-balance {
+      position: absolute;
+      top: calc((var(--balance-y) - 1) * #{$cash-delta-y});
+      left: calc((var(--balance-x) - 1) * #{$cash-delta-x});
+      
+      &.on-break {
+        top: -26px;
+        left: 6px;
+        transform: rotate(25deg);
+      }
+    }
+    
+    .token-cash.cash-income {
+      position: absolute;
+      top: calc((var(--income-y) - 1) * #{$cash-delta-y});
+      left: calc((var(--income-x) - 1) * #{$cash-delta-x});
+      //top: 16.5px;
+      //left: 20.8px;
+    }
+  }
+  
+  .actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: $color-black;
+    
+    .btn {
+      padding: 0.5rem 1rem;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      background: rgba($color-white, .5);
+      color: $color-secondary;
+      
+      &:hover,
+      &:active {
+        background: rgba($color-secondary, .9);
+        color: tint-color($color-black, 75%);
+      }
+    }
+  }
+}
+
+.player-graveyard {
+  .title {
+    font-size: 1.25rem;
+    
+    &::before, &::after {
+      content: '-----';
+      padding: 0 0.5rem;
+    }
+  }
+}

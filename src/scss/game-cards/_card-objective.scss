@@ -1,0 +1,86 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+// Card objective
+$card-objective-board-size: (78.75px 110px);
+$card-objective-preview-size: (237px 332px);
+$card-objective-size: (252px 352px);
+
+.card-objective-picker {
+  .card-river {
+    display: flex;
+    gap: 3px;
+  }
+}
+
+.game-board .card-objective-picker {
+  position: absolute;
+  top: (width($card-objective-board-size) + 45px);
+  left: (height($card-objective-board-size) + 13px);
+  
+  display: flex;
+  z-index: 200;
+  
+  transform-origin: top left;
+  transform: rotate(90deg);
+  
+  .draw-pile {
+    margin-right: 13px;
+  }
+  
+  .card-objective-container {
+    // Cards must front the game board center
+    transform: rotate(180deg);
+  
+    &.state-empty:not(.state-next) {
+      display: none;
+    }
+  }
+}
+
+.dialog-body .card-objective-picker {
+  .card-river {
+    justify-content: space-evenly;
+  }
+}
+
+.card-objective-container {
+  @include size($card-objective-board-size);
+}
+
+@include selectable-card('objective');
+
+// Display as card
+$next-x: -1px;
+.card-objective {
+  @include card-background(url(img/game/ObjectiveCard-Spritesheet-EN-352.png), $card-objective-size);
+  @include card-size($card-objective-board-size, $card-objective-size, '79');
+  @include card-size($card-objective-preview-size, $card-objective-size);
+  @include card-set(prefix(("hidden" "M1TAll" "M1TLamps" "M20Terraces" "M2TFlowers" "M2TMusicians" "M3CategoryT" "M3TQuarter" "M5TFountain" "M9TEast" "M9TNorth" "M9TSouth" "M9TWest" "MAllCatT" "P01" "P02" "P03" "P04" "P05" "P06" "P07" "P08" "P09" "P10" "P11"),
+      'card-objective-'), width($card-objective-size), $next-x);
+  
+  &.size-237 .game-card-inner {
+    border-radius: 29px;
+    outline-width: 4px;
+  }
+}
+
+// Display as image
+$next-x: -1px;
+.objective-card {
+  @include image-background(url(img/game/ObjectiveCard-Spritesheet-EN-352.png), $card-objective-size);
+  @include image-size(16px, height($card-objective-size));
+  @include image-set(prefix(("hidden" "M1TAll" "M1TLamps" "M20Terraces" "M2TFlowers" "M2TMusicians" "M3CategoryT" "M3TQuarter" "M5TFountain" "M9TEast" "M9TNorth" "M9TSouth" "M9TWest" "MAllCatT" "P01" "P02" "P03" "P04" "P05" "P06" "P07" "P08" "P09" "P10" "P11"),
+      'objective-card-'), width($card-objective-size), $next-x);
+}
+
+// Internationalization (default is EN)
+.asset-locale-fr {
+  .card-objective .face::before,
+  .objective-card::before {
+    background-image: url(img/game/ObjectiveCard-Spritesheet-FR-352.png);
+  }
+}
+

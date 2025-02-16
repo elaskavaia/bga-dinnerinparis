@@ -1,0 +1,44 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+$tile-size: 18px;
+$tile-ratio: divide($tile-size, 32px);
+$tile-spacing: 1px;
+
+// Height ratio of restaurants
+// >1 implies an overflow on a terrace
+$restaurant-ratio: 1.2;
+
+// All widths for restaurant with original property width
+$restaurant-sizes: (
+  // For 32px height
+  //2: 103px,
+  //3: 156px,
+  //4: 213px,
+  //5: 266px,
+  // For 64px height
+    2: 206px,
+    3: 312px,
+    4: 426px,
+    5: 532px,
+);
+
+// Height is always the same
+$property-original-height: 64px;
+$property-height: 16px;
+$property-ratio: 0.64 * divide($property-height, $property-original-height);
+
+//$property-ratio: 0.64 * $tile-ratio;
+//$property-ratio: 0.33;
+
+// Height is always the same
+$terrace-original-size: 32px;
+$terrace-size: 16px;
+$terrace-ratio: divide($terrace-size, $terrace-original-size);
+
+// Height is always the same
+$cash-original-size: 32px;
+$cash-size: 10px;
+$cash-ratio: divide($cash-size, $cash-original-size);

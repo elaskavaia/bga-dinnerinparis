@@ -1,0 +1,37 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+$purchase-cost-size: (68px 48px);
+$purchase-income-size: (68px 48px);
+$purchase-score-size: (48px 48px);
+
+$next-x: -1;
+
+.icon-cost {
+  @include image-background(url("img/game/Purchase-Spritesheet-48.png"));
+  @include image-inner-size($purchase-cost-size);
+  @include image-size(32px, $purchase-cost-size);
+  
+  @include image-set(prefix(("1", "12", "2", "3", "4", "5", "6", "7", "8"), 'cost-'), $purchase-cost-size, $next-x);
+}
+
+.icon-income {
+  @include image-background(url("img/game/Purchase-Spritesheet-48.png"));
+  @include image-inner-size($purchase-income-size);
+  @include image-size(32px, $purchase-income-size);
+  
+  @include image-set(prefix(("1"), 'income-'), $purchase-income-size, $next-x);
+}
+
+.icon-score {
+  @include image-background(url("img/game/Purchase-Spritesheet-48.png"));
+  @include image-inner-size($purchase-score-size);
+  @include image-size(32px, $purchase-score-size);
+  
+  @include image-set(prefix(
+              ("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "18", "20", "21", "22", "24", "26", "28", "34"),
+          'score-'), $purchase-score-size, $next-x);
+}
+

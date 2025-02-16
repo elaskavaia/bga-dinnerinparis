@@ -1,0 +1,44 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+.tile>.token-terrace {
+  position: relative;
+  margin: 1px;
+}
+
+.token-terrace {
+  background-repeat: no-repeat;
+  display: block;
+  // min-width because with just width, we tell 16px, it puts 15px
+  min-width: $terrace-size;
+  height: 100%;
+  aspect-ratio: 1/1;
+  //outline: 1px solid yellow;
+
+  &::before {
+    background-image: url('img/game/Terrace-spreadsheet-32.png');
+    height: 100%;
+    background-size: auto 100%;
+    aspect-ratio: 1/1;
+    border-radius: 10%;
+  }
+
+  &.terrace-blue::before {
+    background-position: 0% 0%;
+  }
+
+  &.terrace-cyan::before {
+    background-position: 33.3% 0%;
+  }
+
+  &.terrace-orange::before {
+    background-position: 66.6% 0%;
+  }
+
+  &.terrace-red::before {
+    background-position: 100% 0%;
+  }
+
+}

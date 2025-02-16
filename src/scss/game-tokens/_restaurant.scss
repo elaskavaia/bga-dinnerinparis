@@ -1,0 +1,97 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+.token-restaurant {
+  --token-height: #{ceil($restaurant-ratio * $tile-size)};
+  height: var(--token-height);
+  
+  &::before {
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  & > .token-property {
+    height: ($property-ratio * $property-original-height);
+    position: absolute;
+    bottom: 2px;
+    // Center
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none; // Can hover restaurant through property
+  }
+  
+  &.selectable {
+    &:hover:not(.selected) {
+      z-index: 200;
+      outline: 2px solid $color-orange-light;
+    }
+  }
+  
+}
+
+@for $size from 1 through 5 {
+  .token-restaurant.token-size-#{$size} {
+    width: ($size * ($tile-size + $tile-spacing) - $tile-spacing);
+    
+    &::before {
+      background-image: url('img/game/Restaurant/Restaurant-S#{$size}.png');
+    }
+  }
+}
+
+// Purchase overlay
+.token-restaurant {
+  .overlay-purchase-details {
+    width: 100%;
+    height: 100%;
+    min-width: 32px;
+    min-height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    background: rgba($color-black, 0.5);
+  
+    .cost-free {
+      color: $color-white;
+      transform: rotate(-30deg);
+    }
+  }
+  
+  &.token-face-east {
+    .overlay-purchase-details {
+      min-height: 48px;
+      
+      .fix-rotate-north {
+        //transform-origin: bottom right;
+        transform: rotate(-90deg);
+      }
+    }
+  }
+  
+  &.token-face-south {
+    .overlay-purchase-details {
+      .fix-rotate-north {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  
+  &.token-face-west {
+    .overlay-purchase-details {
+      min-height: 48px;
+      
+      .fix-rotate-north {
+        //transform-origin: bottom right;
+        transform: rotate(-270deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+// Bootstrap
+
+// cf. scss/_variables.scss
+$enable-grid-classes: true;
+$variable-prefix: bs- !default;
+$spacer: 1rem !default;
+$spacers: (
+    0: 0,
+    1: $spacer * .25,
+    2: $spacer * .5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+) !default;
+// 8
+$white: #fff !default;
+$black: #000 !default;
+// 93
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$min-contrast-ratio: 4.5 !default;
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark: $black !default;
+$color-contrast-light: $white !default;
+// 310 - Edited
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+    hg: 1900px, // Custom : Huge
+    xh: 2500px // Custom : Extra Huge
+);
+// 329
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px,
+    hg: 1800px,
+    xh: 2400px 
+) !default;
+// 345
+$grid-columns: 12 !default;
+$grid-gutter-width: 1.5rem !default;
+$grid-row-columns: 6 !default;
+$gutters: $spacers !default;
+$container-padding-x: $grid-gutter-width * .5 !default;
+// 685
+$btn-hover-bg-shade-amount: 15% !default;
+$btn-hover-bg-tint-amount: 15% !default;
+
+// Application
+
+$color-black: #000;
+$color-white: #fff;
+
+$color-light: #fbf6ea; // Beige
+$color-purple: #865c88;
+$color-orange-light: #f7954e;
+
+$color-primary: $color-purple;
+$color-primary-contrast: shade-color($color-primary, $btn-hover-bg-tint-amount);
+$color-secondary: #6c757d;
+

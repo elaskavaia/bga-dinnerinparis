@@ -1,0 +1,42 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+// USed to calculate colors
+@import "bootstrap/functions";
+@import "variables";
+@import "functions";
+
+// Generals
+@import "reset";
+
+.responsive-layer {
+  @import "bootstrap";
+  @import "component/buttons";
+  @import "common";
+  
+  // Components
+  @import "component/dialog";
+  @import "component/modal";
+  
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  
+  // Game
+  @import "game-board";
+  @import "game-components/score-summary";
+  @import "player-set";
+}
+
+// All game assets should be available anywhere (used in player panel)
+@import "game-assets/purchase";
+@import "game-assets/game";
+@import "game-assets/majority";
+@import "game-assets/resource";
+@import "game-tokens/game-tokens";
+@import "game-cards/game-cards";
+
+@import "player-panel";
+
+@import "debug";

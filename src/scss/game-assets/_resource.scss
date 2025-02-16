@@ -1,0 +1,15 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+$resource-size: (200px 200px);
+
+$next-x: -1;
+.resource {
+  @include image-background(url("img/game/Resource-Spritesheet-200.png"), $resource-size);
+  @include image-size(16px, width($resource-size));
+  @include image-size(48px, width($resource-size));
+  @include image-set(prefix(("bread", "cheese", "flour", "gold", "meat", "potatoes", "sea_food", "tomatoes"), 'resource-'), width($resource-size), $next-x);
+}
+

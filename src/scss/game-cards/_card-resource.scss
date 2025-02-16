@@ -1,0 +1,52 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+$card-resource-56-size: (56px 80px);
+$card-resource-size: (245px 352px);
+//$card-resource-scale: divide($card-resource-width, $card-resource-original-width);
+
+.card-resource-picker {
+  position: absolute;
+  top: 589px;
+  left: 187px;
+  display: flex;
+
+  .discard-pile {
+    margin-right: 8px;
+  }
+
+  .draw-pile {
+    margin-right: 3.3px;
+  }
+
+  .card-river {
+    display: flex;
+    gap: 3.5px;
+  }
+}
+
+.card-resource-container {
+  @include size($card-resource-56-size);
+}
+
+@include selectable-card('resource', -4px);
+
+// Display as card
+$next-x: -1px;
+.card-resource {
+  @include card-background(url("img/game/ResourceCard-Spritesheet-352.png"), $card-resource-size);
+  @include card-size($card-resource-56-size, $card-resource-size);
+  @include card-set(prefix(("hidden", "C1Bread", "C1Cheese", "C1Flour", "C1Gold", "C1Meat", "C1Potatoes", "C1SeaFood", "C1Tomatoes", "C2BT", "C2MF", "C2PC", "C2PT", "C3CFT", "C3SBP", "C3SMP"),
+      'card-resource-'), width($card-resource-size), $next-x);
+}
+
+// Display as image
+$next-x: -1px;
+.resource-card {
+  @include image-background(url("img/game/ResourceCard-Spritesheet-352.png"), $card-resource-size);
+  @include image-size(16px, height($card-resource-size));
+  @include image-set(prefix(("hidden", "C1Bread", "C1Cheese", "C1Flour", "C1Gold", "C1Meat", "C1Potatoes", "C1SeaFood", "C1Tomatoes", "C2BT", "C2MF", "C2PC", "C2PT", "C3CFT", "C3SBP", "C3SMP"),
+      'resource-card-'), width($card-resource-size), $next-x);
+}

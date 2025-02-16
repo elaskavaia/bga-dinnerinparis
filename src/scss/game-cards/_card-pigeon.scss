@@ -1,0 +1,57 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+// Card pigeon
+$card-pigeon-board-size: (79px 110px);
+$card-pigeon-small-size: (57.27px 80px);
+//$card-pigeon-preview-size: (237px 332px);
+$card-pigeon-size: (252px 352px);
+
+.card-pigeon-picker {
+  position: absolute;
+  top: 190px;
+  left: 557.4px;
+}
+
+.dialog-body {
+  .card-river {
+    width: 100%;
+    display: flex;
+    gap: 3px;
+    justify-content: space-evenly;
+  }
+}
+
+.card-pigeon-container {
+  @include size($card-pigeon-board-size);
+}
+
+@include selectable-card('pigeon');
+
+.card-pigeon {
+  @include card-background(url(img/game/PigeonCard-Spritesheet-EN-352.png), $card-pigeon-size);
+  @include card-size($card-pigeon-board-size, $card-pigeon-size);
+  @include card-size($card-pigeon-small-size, $card-pigeon-size, '56'); // By fixed height, we fake this is a 56px width
+  //@include card-size($card-pigeon-preview-size, $card-pigeon-size);
+  @include card-set(prefix(("hidden" "AddTerrace" "AdjacentTerrace" "DrawResource" "Ingredient" "Objective" "TwoGolds"),
+      'card-pigeon-'), width($card-pigeon-size), $next-x);
+  
+  &.size-56 .game-card-inner {
+    border-radius: 7px;
+  }
+  
+  &.size-237 .game-card-inner {
+    border-radius: 29px;
+    outline-width: 4px;
+  }
+}
+
+// Internationalization (default is EN)
+.asset-locale-fr {
+  .card-pigeon .face::before {
+    background-image: url(img/game/PigeonCard-Spritesheet-FR-352.png);
+  }
+}
+

@@ -1,0 +1,14 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+$game-image-size: (128px 128px);
+
+$next-x: -1px;
+.medal {
+  @include image-background(url("img/game/Game-Spritesheet-128.png"), $game-image-size);
+  @include image-size(16px, width($game-image-size));
+  @include image-set(prefix(("majority", "score"), 'medal-'), width($game-image-size), $next-x);
+}
+

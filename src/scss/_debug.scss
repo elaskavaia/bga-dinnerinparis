@@ -1,0 +1,86 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+/* Debug coloring */
+.game-board.debug {
+  .tile-grid .tile {
+    background: #ff000030;
+    
+    &.tile-none {
+    }
+    
+    &.tile-out {
+      background: #ff000090;
+    }
+  
+    &.tile-bush {
+      background: #00770090;
+    }
+  
+    &.tile-restaurant {
+      background: #00ff0050;
+    }
+  
+    &.tile-pigeon {
+      background: #77777790;
+    }
+  
+    &.tile-fountain {
+      background: #33d8ff90;
+    }
+
+    &.tile-musician {
+      background: #0000ff90;
+    }
+
+    &.tile-lamp {
+      background: #ece20a90;
+    }
+
+    &.tile-flowerbed {
+      background: #a30e6490;
+    }
+  }
+
+  .card-resource-container {
+    background: #00ff0030;
+  }
+
+  .card-objective-container {
+    background: #00ff0030;
+  }
+
+  .card-pigeon-container {
+    background: #00ff0030;
+  }
+
+  .card-majority-container {
+    background: #00ff0030;
+  }
+
+  // Flip card when cursor is hover the card
+  .cheat {
+    .game-card {
+      &:hover .game-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      &.face-back:hover .game-card-inner {
+        transform: none;
+      }
+    }
+  }
+
+}
+
+.server-logs {
+  max-width: 100%;
+  margin-top: 1rem;
+  overflow-x: auto;
+
+  pre br {
+    display: none;
+  }
+}

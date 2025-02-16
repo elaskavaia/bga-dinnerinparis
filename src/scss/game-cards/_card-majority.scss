@@ -1,0 +1,41 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+// Card majority
+$card-majority-board-size: (79px 110px);
+$card-majority-preview-size: (237px 332px);
+$card-majority-size: (252px 352px);
+
+.card-majority-picker {
+  position: absolute;
+  top: 443px;
+  left: 556.8px;
+}
+
+.card-majority-container {
+  @include size($card-majority-board-size);
+}
+
+// Display as card
+$next-x: -1px;
+.card-majority {
+  @include card-background(url(img/game/MajorityCard-Spritesheet-EN-352.png), $card-majority-size);
+  @include card-size($card-majority-board-size, $card-majority-size);
+  @include card-size($card-majority-preview-size, $card-majority-size);
+  @include card-set(prefix(("hidden" "FlowersLamps" "FlowersRestaurants" "FountainFlowers" "FountainGold" "FountainPigeons" "LampRestaurants" "MusiciansGold" "MusiciansPigeons"),
+      'card-majority-'), width($card-majority-size), $next-x);
+  
+  &.size-237 .game-card-inner {
+    border-radius: 29px;
+    outline-width: 4px;
+  }
+}
+
+// Internationalization (default is EN)
+.asset-locale-fr {
+  .card-majority .face::before {
+    background-image: url(img/game/MajorityCard-Spritesheet-FR-352.png);
+  }
+}

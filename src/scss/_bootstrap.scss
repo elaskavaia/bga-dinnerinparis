@@ -1,0 +1,18 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+//@import "bootstrap/functions";// Before our variables
+@import "bootstrap/mixins";
+@import "bootstrap/containers";
+@import "bootstrap/grid";
+@import "bootstrap/typography";
+
+.mt-3 {
+  margin-top: 1rem !important;
+}
+
+.mt-2 {
+  margin-top: .5rem !important;
+}

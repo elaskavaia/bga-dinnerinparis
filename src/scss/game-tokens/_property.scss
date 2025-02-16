@@ -1,0 +1,45 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+$property-height: 64px;
+$player-colors: ('blue', 'cyan', 'orange', 'red');
+
+.token-property {
+  background-repeat: no-repeat;
+  display: block;
+  height: $property-height;
+  
+  &::before {
+    background-image: url('img/game/Property-Spritesheet-64.png');
+    height: $property-original-height;
+    transform: scale($property-ratio);
+    overflow: hidden;
+    display: block;
+  }
+
+  @each $size, $property-original-width in $restaurant-sizes {
+    &.token-size-#{$size} {
+      width: ($property-original-width * $property-ratio);
+    
+      &::before {
+        width: $property-original-width;
+      }
+    }
+  }
+  
+  
+  $images: ("brasserie": 5, "creperie": 3, "friterie": 2, "gastronomique": 5, "grill": 4, "pizzeria": 3, "fruits-de-mer": 3, "bar-a-vin": 4);
+  $next-x: -8px;
+  @each $color in $player-colors {
+    // Variable width, image-sert() does not work here
+    @each $key, $size in $images {
+      $width: map-get($restaurant-sizes, $size);
+      &.property-#{$color}-#{$key}::before {
+        background-position: $next-x - 1px;
+        $next-x: $next-x - $width - 2px; //subtract spacing
+      }
+    }
+  }
+}

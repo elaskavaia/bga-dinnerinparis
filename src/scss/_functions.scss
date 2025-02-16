@@ -1,0 +1,138 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+@use "sass:list";
+
+/*
+Cards use new size format (size-as-list)
+ */
+@mixin card-background($background, $size) {
+  @include size($size);
+  
+  .face {
+    @include size($size);
+  
+    &::before {
+      width: 100%;
+      height: 100%;
+      background-image: $background;
+      background-repeat: no-repeat;
+      display: block;
+      content: ' ';
+    }
+  
+    // Default is showing front, back is forced
+    &.back::before {
+      background-position: -1px -1px;
+    }
+  }
+}
+
+@mixin card-size($target, $original, $sizeName: null) {
+  // Calculate scale whatever the $target is
+  // If sizeName is fixed, we suppose this is to use a fixed height, so scale is calculated by height
+  $scale: divide(if(type-of($target) == 'list', if($sizeName, height($target), width($target)), $target), if($sizeName, height($original), width($original)));
+  // Use target as list or build target list by calculating height
+  $target: if(type-of($target) == 'list', $target, ($target (height($original) * $scale)));
+  $sizeName: if($sizeName, $sizeName, divide(width($target), 1px));
+  &.size-#{$sizeName} {
+    --card-scale: #{$scale};
+    @include size($target);
+  }
+}
+
+@mixin card-set($images, $step, $next-x: -1px, $space: 1px) {
+  @each $key in $images {
+    &.#{$key} .face.front::before {
+      background-position: $next-x -1px;
+      $next-x: $next-x - $step - $space - 1px; //subtract spacing
+    }
+  }
+}
+
+@function width($size) {
+  @return list.nth($size, 1);
+}
+
+@function height($size) {
+  @return list.nth($size, 2);
+}
+
+@mixin size($size) {
+  width: width($size);
+  height: height($size);
+}
+
+@mixin image-background($background, $size: null) {
+  display: inline-block;
+  @if ($size) {
+    @include size($size);
+  }
+  
+  &::before {;
+    @if ($size) {
+      @include size($size);
+    }
+    background-image: $background;
+    background-repeat: no-repeat;
+    display: block;
+    content: ' ';
+  }
+}
+
+@mixin image-inner-size($size) {
+  @include size($size);
+  &::before {
+    @include size($size);
+  }
+}
+
+@mixin image-size($new-width, $original-width) {
+  $original-size: if(type-of($original-width) == list, $original-width, ($original-width $original-width));
+  $original-width: width($original-size);
+  $width-scale: divide($new-width, $original-width);
+  $new-size: ($new-width ($width-scale * height($original-size)));
+  &.size-#{divide($new-width, 1px)} {
+    @include size($new-size);
+    
+    &::before {
+      transform-origin: top left;
+      transform: scale($width-scale);
+    }
+  }
+}
+
+@mixin image-set($images, $step, $next-x: -1px, $space: 1px) {
+  $size: if(type-of($step) == list, $step, null);
+  $step: if(type-of($step) == list, width($step), $step);
+  @each $key in $images {
+    //@if ($size) {
+    //  &.#{$key} {
+    //    @include image-inner-size($size);
+    //  }
+    //}
+    &.#{$key}::before {
+      background-position: $next-x -1px;
+      $next-x: $next-x - $step - $space - 1px; //subtract spacing
+    }
+  }
+}
+
+@function prefix($list, $prefix) {
+  $prefixed: ();
+  @each $value in $list {
+    $prefixed: list.append($prefixed, $prefix + $value);
+  }
+  @return $prefixed;
+}
+
+// Fix issue with safari support of justify-content: end
+// https://caniuse.com/?search=justify-content%20end
+//noinspection CssOverwrittenProperties
+@mixin justify-content-end() {
+  justify-content: right; // Supported by all
+  justify-content: end; // Not supported by safari
+}
+

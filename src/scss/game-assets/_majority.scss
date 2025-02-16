@@ -1,0 +1,15 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+$majority-size: (166px 166px);
+
+$next-x: -1;
+.majority-icon {
+  @include image-background(url("img/game/Majority-Spritesheet-166.png"), $majority-size);
+  @include image-size(32px, width($majority-size));
+  @include image-set(prefix(("around_band", "around_flower_bed", "around_fountain", "around_lamp", "in_area_east", "in_area_north", "in_area_south", "in_area_west",
+  "more_money", "more_pigeon_cards", "more_restaurants"), 'majority-'), width($majority-size), $next-x);
+}
+

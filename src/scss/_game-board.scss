@@ -1,0 +1,150 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+$restaurant-border-color: #00000040;
+
+.page-wrapper {
+  min-height: 100vh;
+  position: relative;
+}
+
+.page-overlay {
+  // Dialogs could only be fixed or mobile version will be fucked up
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1030;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100vw;
+  height: 100vh;
+}
+
+.game-table {
+  .restaurant-pile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .item-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .item-model {
+      display: inline-block;
+      margin-bottom: 0.25rem;
+    }
+
+    .item-counter {
+      display: inline-block;
+      padding: 0.3rem;
+      background: $color-white;
+      font-weight: 600;
+      border-radius: 9rem;
+    }
+  }
+
+  .restaurant-panel {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    .restaurant-description {
+      .list-info {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .item-info {
+        margin-right: 0.25rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .item-cost {
+        font-size: 2rem;
+      }
+    }
+
+    .restaurant-build {
+      // Fill parent
+      flex: 1 1 auto;
+      // Flex children
+      display: flex;
+      flex-direction: column;
+
+      .build-resource-cards {
+        // Spacing children
+        gap: 0.5rem;
+      }
+    }
+  }
+}
+
+.game-board {
+  --board-size: 719px;
+  /*--tile-size: 16px;*/
+  width: var(--board-size);
+  height: var(--board-size);
+  background: url('img/game/Board-Game-4p.jpg');
+  background-size: cover;
+  position: relative;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+
+  .tile-grid {
+    --grid-position: 169px;
+    --grid-size: 380px;
+    position: absolute;
+    top: var(--grid-position);
+    left: var(--grid-position);
+    width: var(--grid-size);
+    height: var(--grid-size);
+
+    display: grid;
+    grid: repeat(20, 19px) / repeat(20, 19px);
+    //grid: repeat(20, 1fr) / repeat(20, 1fr);
+    //grid-gap: 1px;
+    grid-gap: 0;
+
+    .tile {
+      position: relative;
+      overflow: visible;
+      z-index: 10;
+      // Negative margins compensate the right & bottom borders, it overflows on near cells
+      margin: 0 -1px -1px 0;
+      border: 1px dashed transparent;
+      //border-left: 1px dashed transparent;
+      //border-top: 1px dashed transparent;
+      box-sizing: content-box;
+  
+      // Overlap restaurant
+      //&:hover {
+      //  z-index: 201 !important;
+      //}
+  
+      &.selectable {
+        background: #00990080;
+        cursor: pointer;
+    
+        .token {
+          // Go through any displayed token in
+          pointer-events: none;
+        }
+  
+        &:hover {
+          outline: #00bb00 solid 2px;
+        }
+      }
+  
+      &.tile-rejected {
+        //background: rgba($color-purple, 20%);
+        background: rgba($color-black, 10%);
+      }
+    }
+  }
+}

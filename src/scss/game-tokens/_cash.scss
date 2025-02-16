@@ -1,0 +1,32 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+.token-cash {
+  background-repeat: no-repeat;
+  display: block;
+  width: $cash-size;
+  height: $cash-size;
+
+  &::before {
+    background-image: url('img/game/Cash-Spritesheet-32.png');
+    width: $cash-original-size;
+    height: $cash-original-size;
+    transform: scale($cash-ratio);
+    overflow: hidden;
+    display: block;
+  }
+
+  &.cash-balance::before {
+    background-position: -1px -1px;
+  }
+
+  &.cash-income::before {
+    background-position: -35px -1px;
+  }
+}
+
+.revenue-equality .cash-income {
+  display: none;
+}

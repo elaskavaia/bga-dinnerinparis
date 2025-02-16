@@ -1,0 +1,40 @@
+/**
+ * @author Florent HAZARD <f.hazard@sowapps.com>
+ * @copyright 2022 Funnyfox
+ */
+
+.game-player-panel {
+  display: flex;
+  flex-direction: column;
+  
+  & > * {
+    padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .panel-item {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    position: relative;
+
+    &.item-majority-ranking {
+      .item-value {
+        position: absolute;
+        left: 8px;
+        bottom: -4px;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        text-align: center;
+        //line-height: 24px;
+        font-size: 10px;
+        border-radius: 16px;
+        background: $color-white;
+        z-index: 1;
+      }
+    }
+  }
+}

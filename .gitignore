@@ -1,0 +1,11 @@
+# Common
+/.composer
+composer.phar
+node_modules/*
+.DS_Store
+# But keep empty folder containing gitkeep & htaccess
+!.gitkeep
+!.htaccess
+
+dinnerinparis.css*
+modules/js/*
