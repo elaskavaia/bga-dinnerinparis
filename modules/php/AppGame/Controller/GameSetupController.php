@@ -55,7 +55,7 @@ class GameSetupController extends AbstractController {
 			$this->dealTokens();
 		} catch( Throwable $exception ) {
 			//$this->logger->error($exception);
-			var_dump($exception);
+			var_dump($exception->getMessage());
 			die();
 		}
 

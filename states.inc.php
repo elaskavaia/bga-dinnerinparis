@@ -70,25 +70,6 @@ if( !defined('GAME_STATE_TYPE_ACTIVE_PLAYER') ) {
 
 $machinestates = [
 	
-	/*** System states - Please do not modify ***/
-	
-	// The initial state
-	GAME_STATE_GAME_START => [
-		"name"        => "gameSetup",
-		"description" => clienttranslate('Game setup'),
-		"type"        => GAME_STATE_TYPE_MANAGER,
-		"action"      => "stGameSetup",
-		"transitions" => ['' => 2],
-	],
-	
-	// The final state
-	GAME_STATE_GAME_END   => [
-		"name"        => "gameEnd",
-		"description" => clienttranslate("End of game"),
-		"type"        => GAME_STATE_TYPE_MANAGER,
-		"action"      => "stGameEnd",
-		"args"        => "argGameEnd",
-	],
 	
 	/*** Game states ***/
 	

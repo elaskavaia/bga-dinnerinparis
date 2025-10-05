@@ -737,7 +737,12 @@ class DinnerInParis extends Table {
 		(see states.inc.php)
 	*/
 	function getGameProgression(): int {
-		return $this->app->getProgression();
+		try {
+			return $this->app->getProgression();
+		} catch (Throwable $e) {
+			// some weird error happen during initialization
+			return 0;
+		}
 	}
 	
 	public function argInitializationChooseObjectiveCard(): array {
