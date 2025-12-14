@@ -4,7 +4,8 @@
  * @copyright 2022 Funnyfox
  */
 
-require_once APP_GAMEMODULE_PATH . 'module/table/table.game.php';
+use Bga\GameFramework\Table;
+use Bga\GameFramework\VisibleSystemException;
 
 /**
  * @method string getBgaEnvironment
@@ -202,7 +203,7 @@ class DinnerInParis extends Table {
 			return;
 		}
 		
-		throw new feException(sprintf('Zombie mode not supported at this game state: %s', $statename));
+		throw new VisibleSystemException(sprintf('Zombie mode not supported at this game state: %s', $statename));
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////:
@@ -241,11 +242,6 @@ class DinnerInParis extends Table {
 		//            self::applyDbUpgradeToAllDB( $sql );
 		//        }
 		//        // Please add your future database scheme changes here
-	}
-	
-	protected function getGameName(): string {
-		// Used for translations and stuff. Please do not modify.
-		return "dinnerinparis";
 	}
 	
 	public function startPlayerTurn() {

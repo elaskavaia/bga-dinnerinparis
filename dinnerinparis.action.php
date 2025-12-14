@@ -18,13 +18,13 @@
  *
  */
 
-use AppGame\Entity\Player;
-use AppGame\Entity\Restaurant;
-use AppGame\Game\GameTable;
-use AppGame\Game\TerraceBuildResolver;
-use AppGame\Logger\BgaLogger;
-use AppGame\Service\BoardGameApp;
-use AppGame\Service\GeometryService;
+use \Bga\Games\DinnerInParis\Entity\Player;
+use \Bga\Games\DinnerInParis\Entity\Restaurant;
+use \Bga\Games\DinnerInParis\Game\GameTable;
+use \Bga\Games\DinnerInParis\Game\TerraceBuildResolver;
+use \Bga\Games\DinnerInParis\Logger\BgaLogger;
+use \Bga\Games\DinnerInParis\Service\BoardGameApp;
+use \Bga\Games\DinnerInParis\Service\GeometryService;
 
 
 /**
